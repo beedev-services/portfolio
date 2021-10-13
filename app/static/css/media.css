@@ -1,0 +1,128 @@
+@media only screen and (min-width: 400px) {
+  body header nav {
+    width: 115%;
+  }
+  body main .about-start img {
+    width: 35%;
+  }
+  body .projects .project-card img {
+    width: 75%;
+  }
+}
+@media only screen and (min-width: 530px) {
+  body header nav {
+    width: 150%;
+  }
+  body main .about-start img {
+    width: 30%;
+  }
+  body .resume .resume-parts .skills-education .skills .mobile {
+    display: none;
+  }
+  body .resume .resume-parts .skills-education .skills .desktop {
+    display: block;
+  }
+  body .resume .resume-parts .skills-education .skills .desktop tr td {
+    padding: 0 0.5em;
+    text-align: left;
+  }
+  body .contact .reach p {
+    flex-direction: row;
+  }
+  body .contact .reach p a {
+    padding-left: 0.5em;
+  }
+}
+@media only screen and (min-width: 730px) {
+  body header .head {
+    flex-direction: row;
+  }
+  body header .head img {
+    display: flex;
+    width: 14%;
+    border-radius: 50%;
+    margin-right: 1em;
+  }
+  body header nav {
+    width: 95%;
+  }
+  body header nav .nav-small {
+    display: none;
+  }
+  body header nav .navbar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  }
+  body header nav .navbar .nav-option {
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'Coming Soon', cursive;
+    color: inherit;
+  }
+  body header nav .navbar .nav-option:hover {
+    background-color: #909970;
+  }
+  body header nav .navbar .clicked {
+    font-weight: bold;
+    font-family: 'Coming Soon', cursive;
+    font-size: 1.2em;
+    background-color: #909970;
+    padding: 0.2em 1em;
+  }
+  body main .about-start {
+    flex-direction: row;
+  }
+  body main .about-start .text {
+    width: 65%;
+    margin-right: 1em;
+  }
+  body main .about-start img {
+    width: 25%;
+  }
+  body .resume .resume-parts {
+    width: 50%;
+  }
+}
+@media only screen and (min-width: 850px) {
+  body header .head img {
+    width: 12%;
+  }
+  body main {
+    width: 65%;
+  }
+  body main .about-start img {
+    width: 20%;
+  }
+  body .resume .resume-parts {
+    width: 65%;
+  }
+  body .resume .resume-parts .skills-education {
+    flex-direction: row;
+    width: 115%;
+  }
+  body .resume .resume-parts .skills-education .skills {
+    padding-right: 1em;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  body header .head img {
+    width: 8%;
+  }
+  body main {
+    width: 50%;
+  }
+  body main .about-start img {
+    width: 20%;
+  }
+  body .projects .project-card img {
+    width: 55%;
+  }
+}
+@media only screen and (min-width: 1330px) {
+  body header .head img {
+    width: 6%;
+  }
+}

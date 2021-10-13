@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    {% block subMenu %}
+    <nav class="navbar">
+        <a href="/allProjects/frontEnd" class="nav-option">Front End Projects</a>
+        <a href="/allProjects/backEnd" class="nav-option">Back End Projects</a>
+        <a href="/allProjects/fullStack" class="nav-option">Full Stack Projects</a>
+        <a href="/allProjects/organizations" class="nav-option">Organizations</a>
+    </nav>
+    <nav class="nav-small">
+        <button class="button" id='showSubMenu'>Menu</button>
+        <div id="hideSubMenu">
+
+        </div>
+    </nav>
+
+    {% endblock subMenu %}
+</body>
+</html>

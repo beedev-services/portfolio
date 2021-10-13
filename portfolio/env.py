@@ -1,0 +1,1 @@
+KEY='django-insecure-62g5s($%q_4w81pd2wh=p#85ky)n4uleh2&r0$sv521gc-yad^'

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    {% block menu %}
+    <nav class="navbar">
+        <a href="/" class='nav-option'>Home</a>
+        <a href="/currentProjects" class='nav-option'>Current Projects</a>
+        <a href="/pastProjects" class='nav-option'>Past Projects</a>
+        <a href="/allProjects" class='nav-option'>All Projects</a>
+        <a href="/resume" class='nav-option'>Resume</a>
+        <a href="/contact" class='nav-option'>Contact</a>
+    </nav>
+    <nav class="nav-small">
+        <button class="button" id='showMenu'>Menu</button>
+        <div id="hideMenu">
+            <a href="/" class='nav-option'>Home</a>
+            <a href="/currentProjects" class='nav-option'>Current Projects</a>
+            <a href="/pastProjects" class='nav-option'>Past Projects</a>
+            <a href="/allProjects" class='nav-option'>All Projects</a>
+            <a href="/resume" class='nav-option'>Resume</a>
+            <a href="/contact" class='nav-option'>Contact</a>
+        </div>
+    </nav>
+
+    {% endblock menu %}
+</body>
+</html>
