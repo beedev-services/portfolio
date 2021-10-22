@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://images.craftsnherbs.com/beelogo01.jpg">
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
-    <title>Front End - Melissa Longenberger</title>
+    <title>Login - Melissa Longenberger</title>
 </head>
 <body>
     <header>
@@ -19,11 +19,29 @@
         </nav>
         <hr>
         <nav>
-            {% block subMenu %} {% include './subMenu.html' %} {% endblock subMenu %}
+            {% block adminMenu %} {% include './adminMenu.html' %} {% endblock adminMenu %}
         </nav>
     </header>
     <main>
-
+        {% if messages %}
+        <section class='messages'>
+            {% for message in messages %}
+            <h3 {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h3>
+            {% endfor %}
+        </section>
+        {% endif %}
+        <form action='/24/login/' method='post'>
+            {% csrf_token %}
+            <section>
+                <label for='username'>Username</label>
+                <input name='username' id='username' type='text'>
+            </section>
+            <section>
+                <label for='password'>Password</label>
+                <input name='password' id='password' type='password'>
+            </section>
+            <button>Sign In</button>
+        </form>
     </main>
     {% block footer %} {% include '../footer.html' %} {% endblock footer %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

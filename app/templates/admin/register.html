@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://images.craftsnherbs.com/beelogo01.jpg">
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+    <title>Register - Melissa Longenberger</title>
+</head>
+<body>
+    <header>
+        <div class="head">
+            {% block header %} {% include '../header.html' %} {% endblock %}
+        </div>
+        <nav>
+            {% block menu %} {% include '../menu.html' %} {% endblock menu %}
+        </nav>
+        <hr>
+        <nav>
+            {% block adminMenu %} {% include './adminMenu.html' %} {% endblock adminMenu %}
+        </nav>
+    </header>
+    <main>
+        {% if messages %}
+        <section class='messages'>
+            {% for message in messages %}
+            <h3 {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h3>
+            {% endfor %}
+        </section>
+        {% endif %}
+        <form action='/24/register/' method='post'>
+            {% csrf_token %}
+            <section>
+                <label for='username'>Username:</label>
+                <input type='text' name='username' id='username'>
+            </section>
+            <section>
+                <label for='password'>Password:</label>
+                <input type='password' name='password' id='password'>
+            </section>
+            <section>
+                <label for='confirm'>Confirm Password</label>
+                <input type='password' name='confirm' id='confirm'>
+            </section>
+            <button>Submit and Login</button>
+        </form>
+    </main>
+    {% block footer %} {% include '../footer.html' %} {% endblock footer %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src='{% static "js/script.js"%}'></script>
+</body>
+</html>

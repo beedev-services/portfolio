@@ -5,18 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://images.craftsnherbs.com/beelogo01.jpg">
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
-    <title>Projects - Melissa Longenberger</title>
+    <title>All Projects Wiki - Melissa Longenberger</title>
 </head>
 <body>
     <header>
         <div class="head">
-            <img src='http://images.craftsnherbs.com/new-melissa.jpg' alt='Melissa' />
-            <div class="heading">
-                <h1>Melissa Longenberger</h1>
-                <h3>Full Stack Web Developer</h3>
-                <a href='https://blog.melissa-longenberger.com/' target='_blank' rel='noreferrer'><h3>Blog</h3></a>
-            </div>
+            {% block header %} {% include 'header.html' %} {% endblock %}
         </div>
         <nav>
             {% block menu %} {% include 'menu.html' %} {% endblock menu %}
@@ -27,11 +23,12 @@
         </nav>
     </header>
     <main>
-
+        <h1>Welcome to the - All Projects Wiki</h1>
+        <p>A comprehensive list of all projects that I have or am working on.</p>
+        <p>All of the projects listed here have links to their source code. Some will have live links to a deployed version.</p>
+        <p>The purpose of this is to have a place to store all my project, the good, bad, and ugly ones.  This way you can take a deeper dive into what I have done outside of what I am most proud of.</p>
     </main>
-    <footer>
-        <p>Melissa Longenberger &#169; 2021</p>
-    </footer>
+    {% block footer %} {% include 'footer.html' %} {% endblock footer %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src='{% static "js/script.js"%}'></script>
 </body>

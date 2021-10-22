@@ -122,22 +122,16 @@ body main .about-body p {
   font-family: 'Coming Soon', cursive;
   font-size: 1.2em;
 }
-body .projects {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-body .projects h2 {
+body main h2 {
   font-family: 'Coming Soon', cursive;
   letter-spacing: 0.2em;
 }
-body .projects h4 {
+body main h4 {
   font-family: 'Coming Soon', cursive;
   letter-spacing: 0.2em;
   text-align: center;
 }
-body .projects .project-card {
+body main .project-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -146,29 +140,29 @@ body .projects .project-card {
   border: 3px groove #aea9a577;
   margin: 0.5em 0 1.5em 0;
 }
-body .projects .project-card h3 {
+body main .project-card h3 {
   font-family: 'Coming Soon', cursive;
   letter-spacing: 0.2em;
 }
-body .projects .project-card h4 {
+body main .project-card h4 {
   font-family: 'Coming Soon', cursive;
   letter-spacing: 0.2em;
   text-align: center;
   width: 75%;
 }
-body .projects .project-card .links {
+body main .project-card .links {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-body .projects .project-card .links a {
+body main .project-card .links a {
   padding: 0 1em;
   font-family: 'Coming Soon', cursive;
   letter-spacing: 0.2em;
   color: black;
 }
-body .projects .project-card img {
+body main .project-card img {
   width: 85%;
   padding: 0.5em;
 }
@@ -280,6 +274,16 @@ body footer p {
   width: 65%;
   text-align: center;
 }
+body footer .row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 50%;
+}
+body footer .row img {
+  max-height: 30px;
+}
 @media only screen and (min-width: 400px) {
   body header nav {
     width: 115%;
@@ -287,7 +291,7 @@ body footer p {
   body main .about-start img {
     width: 35%;
   }
-  body .projects .project-card img {
+  body main .project-card img {
     width: 75%;
   }
 }
@@ -344,6 +348,9 @@ body footer p {
     font-family: 'Coming Soon', cursive;
     color: inherit;
   }
+  body header nav .navbar .nav-option:hover {
+    background-color: #909970;
+  }
   body header nav .navbar .clicked {
     font-weight: bold;
     font-family: 'Coming Soon', cursive;
@@ -351,14 +358,14 @@ body footer p {
     background-color: #909970;
     padding: 0.2em 1em;
   }
-  body main .about-start {
+  body main .flex .about-start {
     flex-direction: row;
   }
-  body main .about-start .text {
+  body main .flex .about-start .text {
     width: 65%;
     margin-right: 1em;
   }
-  body main .about-start img {
+  body main .flex .about-start img {
     width: 25%;
   }
   body .resume .resume-parts {
@@ -396,7 +403,7 @@ body footer p {
   body main .about-start img {
     width: 20%;
   }
-  body .projects .project-card img {
+  body main .project-card img {
     width: 55%;
   }
 }

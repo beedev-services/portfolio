@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://images.craftsnherbs.com/beelogo01.jpg">
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
-    <title>Current Projects - Melissa Longenberger</title>
+    <title>Register - Melissa Longenberger</title>
 </head>
 <body>
     <header>
@@ -17,25 +17,13 @@
         <nav>
             {% block menu %} {% include '../menu.html' %} {% endblock menu %}
         </nav>
+        <hr>
+        <nav>
+            {% block adminMenu %} {% include './adminMenu.html' %} {% endblock adminMenu %}
+        </nav>
     </header>
     <main>
-        <h2>Current Projects</h2>
-        <h4>Projects on this page are live and in many cases still being used or updated.</h4>
-        {% for curr in currProj %}
-            <div class="project-card">
-                <h3>{{curr.currName}}</h3>
-                <h4>{{curr.currDesc}}</h4>
-                <div class="links">
-                    {% if curr.currSource != '' %}
-                    <a href="{{curr.currSource}}">Source Code</a>
-                    {% endif %}
-                    {% if curr.currLink != '' %}
-                        <a href="{{curr.currLink}}">Live Link</a>
-                    {% endif %}
-                </div>
-                <img src="{{curr.currImg}}" alt="{{curr.currName}}">
-            </div>
-        {% endfor %}
+
     </main>
     {% block footer %} {% include '../footer.html' %} {% endblock footer %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

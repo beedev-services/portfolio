@@ -5,7 +5,7 @@
   body main .about-start img {
     width: 35%;
   }
-  body .projects .project-card img {
+  body main .project-card img {
     width: 75%;
   }
 }
@@ -72,14 +72,14 @@
     background-color: #909970;
     padding: 0.2em 1em;
   }
-  body main .about-start {
+  body main .flex .about-start {
     flex-direction: row;
   }
-  body main .about-start .text {
+  body main .flex .about-start .text {
     width: 65%;
     margin-right: 1em;
   }
-  body main .about-start img {
+  body main .flex .about-start img {
     width: 25%;
   }
   body .resume .resume-parts {
@@ -117,7 +117,7 @@
   body main .about-start img {
     width: 20%;
   }
-  body .projects .project-card img {
+  body main .project-card img {
     width: 55%;
   }
 }
