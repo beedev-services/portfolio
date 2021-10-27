@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://images.craftsnherbs.com/beelogo01.jpg">
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
-    <title>Register - Melissa Longenberger</title>
+    <title>Admin Dashboard</title>
 </head>
 <body>
     <header>
@@ -24,14 +24,8 @@
     </header>
     <main>
         <div class="row">
-            <div class="column">
-                {% for c in contact %}
-                    <p>Email Address: <a href="mailto:{{c.email}}">{{c.email}}</a></p>
-                    <p>LinkedIn: <a href="{{c.linkedIn}}">Profile</a></p>
-                    <p>Github User: <a href="{{c.github}}">melissa-24</a></p>
-                {% endfor %}
-            </div>
-            <form action="/createContact" method='post'>
+            <form action="/24/createContact/" method='post' class='formHide'>
+                {% csrf_token %}
                 <section>
                     <label for="email">Email: </label>
                     <input type="email" name='email'>
@@ -44,11 +38,48 @@
                     <label for="github">Github: </label>
                     <input type="text" name='github'>
                 </section>
+                <button>Submit</button>
+            </form>
+            <form action="/24/createUpdateType/"method='post' class='formHide'>
+                {% csrf_token %}
+                <section>
+                    <label for="typeUpdate">Update Type: </label>
+                    <input type="text" name='typeUpdate'>
+                </section>
+                <button>Submit</button>
+            </form>
+            <form action="/24/createUpdated/" method='post' class='formHide'>
+                {% csrf_token %}
+                <section>
+                    <label for="whyUpdate">Update Reason: </label>
+                    <input type="text" name='whyUpdate'>
+                </section>
+                <section>
+                    <label for="updatedType"></label>
+                    <select name="updatedType">
+                        {% for t in types %}
+                            <option value="{{t.id}}">{{t.typeUpdate}}</option>
+                        {% endfor %}
+                    </select>
+                </section>
+                <button>Submit</button>
             </form>
         </div>
-        <div class="row">
-            <form action=""></form>
-            <form action=""></form>
+        <div class="row data">
+            <div class="column">
+                <h3>Current Contact info</h3>
+                {% for c in contact %}
+                    <p>Email Address: <a href="mailto:{{c.email}}">{{c.email}}</a></p>
+                    <p>LinkedIn: <a href="{{c.linkedIn}}">Profile</a></p>
+                    <p>Github User: <a href="{{c.github}}">melissa-24</a></p>
+                {% endfor %}
+            </div>
+            <div class="column">
+                <h3>Update Log</h3>
+                {% for u in updated %}
+                    <p>Update Reason: {{u.whyUpdate}}<br>Last Update: {{u.updatedAt}}</p>
+                {% endfor %}
+            </div>
         </div>
     </main>
     {% block footer %} {% include '../footer.html' %} {% endblock footer %}

@@ -23,7 +23,165 @@
         </nav>
     </header>
     <main>
-
+        <div class="row">
+            <form action="/24/createCurrent" method='post' class="hideForm">
+                {% csrf_token %}
+                <h4>Current Project Form</h4>
+                <section>
+                    <label for="currName">Project Name: </label>
+                    <input type="text" name='currName'>
+                </section>
+                <section>
+                    <label for="currDesc">Description: </label>
+                    <input type="text" name='currDesc'>
+                </section>
+                <section>
+                    <label for="currImg">Image Link: </label>
+                    <input type="text" name='currImg'>
+                </section>
+                <section>
+                    <label for="currSource">Source Link: </label>
+                    <input type="text" name='currSource'>
+                </section>
+                <section>
+                    <label for="currLink">Live Link: </label>
+                    <input type="text" name='currName'>
+                </section>
+                <button>Submit</button>
+            </form>
+            <form action="/24/createPast/" method='post' class="hideForm">
+                {% csrf_token %}
+                <h4>Past Project Form</h4>
+                <section>
+                    <label for="pastName">Project Name: </label>
+                    <input type="text" name='pastName'>
+                </section>
+                <section>
+                    <label for="pastDesc">Description: </label>
+                    <input type="text" name='pastDesc'>
+                </section>
+                <section>
+                    <label for="pastImg">Image Link: </label>
+                    <input type="text" name='pastImg'>
+                </section>
+                <section>
+                    <label for="pastSource">Source Link: </label>
+                    <input type="text" name='pastSource'>
+                </section>
+                <section>
+                    <label for="pastLink">Live Link: </label>
+                    <input type="text" name='pastLink'>
+                </section>
+                <button>Submit</button>
+            </form>
+        </div>
+        <div class="row">
+            <form action="/24/createProjType/" method='post' class="hideForm">
+                {% csrf_token %}
+                <h4>Project Type Form</h4>
+                <section>
+                    <label for="projType">Project Type: </label>
+                    <input type="text" name='projType'>
+                </section>
+                <button>Submit</button>
+            </form>
+            <form action="/24/createProjStatus/" method='post' class="hideForm">
+                {% csrf_token %}
+                <h4>Project Status Form</h4>
+                <section>
+                    <label for="projStatus">Project Status: </label>
+                    <input type="text" name='projStatus'>
+                </section>
+                <button>Submit</button>
+            </form>
+            <form action="/24/createAllProj/" method='post' class="hideForm">
+                {% csrf_token %}
+                <h4>All Projects Form</h4>
+                <section>
+                    <label for="projName">Project Name: </label>
+                    <input type="text" name='projName'>
+                </section>
+                <section>
+                    <label for="projDesc">Description: </label>
+                    <input type="text" name='projDesc'>
+                </section>
+                <section>
+                    <label for="projSource">Source Link: </label>
+                    <input type="text" name='projSource'>
+                </section>
+                <section>
+                    <label for="projLink">Live Link: </label>
+                    <input type="text" name='projLink'>
+                </section>
+                <section>
+                    <label for="projOrg">Organization Link: </label>
+                    <input type="text" name='projOrg'>
+                </section>
+                <section>
+                    <label for="theType">Project Type: </label>
+                    <select name="theType">
+                        {% for t in types %}
+                            <option value="{{t.id}}">{{t.projType}}</option>
+                        {% endfor %}
+                    </select>
+                </section>
+                <section>
+                    <label for="theStatus">Project Status: </label>
+                    <select name="theStatus">
+                        {% for s in status %}
+                            <option value="{{s.id}}">{{s.projStatus}}</option>
+                        {% endfor %}
+                    </select>
+                </section>
+            </form>
+        </div>
+        <div class="row">
+            <div class="column">
+                <h4>Current Projects:</h4>
+                {% for c in current %}
+                    <p>Project Name: {{c.currName}}</p>
+                {% endfor %}
+            </div>
+            <div class="column">
+                <h4>Past Projects:</h4>
+                {% for p in past %}
+                    <p>Project Name: {{p.pastName}}</p>
+                {% endfor %}
+            </div>
+        </div>
+        <h3>All Projects: </h3>
+        <div class="row data">
+            <div class="column">
+                <h4>Current</h4>
+                <div class="row">
+                    <div class="column">
+                        {% for s in projStat %}
+                            {% if 'Current' in s.projStatus %}
+                                {% for t in projType %}
+                                    {% if 'Front' in t.projType %}
+                                        {% for a in allProj %}
+                                            <p>Project Name: {{a.projName}}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="column"></div>
+                    <div class="column"></div>
+                    <div class="column"></div>
+                </div>
+            </div>
+            <div class="column">
+                <h4>Past</h4>
+                <div class="row">
+                    <div class="column"></div>
+                    <div class="column"></div>
+                    <div class="column"></div>
+                    <div class="column"></div>
+                </div>
+            </div>
+        </div>
     </main>
     {% block footer %} {% include '../footer.html' %} {% endblock footer %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

@@ -1,0 +1,46 @@
+@font-face {
+  font-family: 'Bad Script';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/badscript/v9/6NUT8F6PJgbFWQn47_x7lOw.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Coming Soon';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/comingsoon/v12/qWcuB6mzpYL7AJ2VfdQR1u-S.ttf) format('truetype');
+}
+.flexrow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.flexcolumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.altflexcolumn {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+}
+.altflexrow {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+}
+.cursiveSize12 {
+  font-family: 'Coming Soon', cursive;
+  font-size: 1.2em;
+}
+.cursiveSpace2 {
+  font-family: 'Coming Soon', cursive;
+  letter-spacing: 0.2em;
+}

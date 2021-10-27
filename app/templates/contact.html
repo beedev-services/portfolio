@@ -19,10 +19,23 @@
         </nav>
     </header>
     <main>
-
+        {% for c in contact %}
+        <p>Email Address: <a href="mailto:{{c.email}}">{{c.email}}</a></p>
+        <p>LinkedIn: <a href="{{c.linkedIn}}">Profile</a></p>
+        <p>Github User: <a href="{{c.github}}">melissa-24</a></p>
+        {% endfor %}
+        <p>Feel free to use the chat icon below as well</p>
+        {% for u in updateType %}
+            {% if 'Contact' in u.typeUpdate %}
+                {% for a in updated %}
+                    <p>Last Update: {{a.updatedAt}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
     </main>
     {% block footer %} {% include 'footer.html' %} {% endblock footer %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src='{% static "js/script.js"%}'></script>
+    <script src='{% static "js/script.js" %}'></script>
+    <script src="{% static 'js/tawk.js' %}"></script>
 </body>
 </html>

@@ -1,36 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Coming+Soon&display=swap');
-
-// font-family: 'Bad Script', cursive;
-// font-family: 'Coming Soon', cursive;
-// letter-spacing: .2em;
+@import './base.less';
 
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #f3f2f2;
+    .flexcolumn();
+    background-color: @bg;
+    
     header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        .flexcolumn();
         margin: .2em;
+
         .head {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            .flexcolumn();
             padding-bottom: .4em;
+
             img {
                 display: none;
             }
             .heading {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
+                .flexcolumn();
                 font-family: 'Bad Script', cursive;
+
                 h1 {
                     letter-spacing: .1em;
                     text-align: center;
@@ -41,25 +29,20 @@ body {
             }
         }
         nav {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
+            .flexcolumn();
             width: 95%;
-            background-color: #aea9a5;
+            background-color: @navbg;
+
             .navbar {
                 display: none;
             }
             .nav-small {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                .flexcolumn();
                 justify-content: space-around;
 
                 .button {
-                    font-family: 'Coming Soon', cursive;
-                    font-size: 1.2em;
-                    border: 2px groove #909970;
+                    .cursiveSize12();
+                    border: @linkborder;
                 }
                 #hideMenu {
                     display: none;
@@ -72,7 +55,7 @@ body {
                         text-align: center;
                         color: inherit;
                         &:hover {
-                            background-color: #909970;
+                            background-color: @linkbg;
                         }
                     }
                 }
@@ -80,23 +63,16 @@ body {
         }
     }
     main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        .flexcolumn();
         width: 85%;
         margin-top: .5em;
 
             .about-start {
-                display: flex;
-                flex-direction: column-reverse;
-                align-items: center;
-                justify-content: center;
+                .altflexcolumn();
                 .text {
                     text-align: center;
                     p {
-                        font-family: 'Coming Soon', cursive;
-                        font-size: 1.2em;
+                        .cursiveSize12();
                     }
                 }
                 img {
@@ -105,53 +81,38 @@ body {
                 }
             }
             .about-body {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
+                .flexcolumn();
                 text-align: center;
                 p {
-                    font-family: 'Coming Soon', cursive;
-                    font-size: 1.2em;
+                    .cursiveSize12();
                 }
             }
             h2 {
-                font-family: 'Coming Soon', cursive;
-                letter-spacing: .2em;
+                .cursiveSpace2();
             }
             h4 {
-                font-family: 'Coming Soon', cursive;
-                letter-spacing: .2em;
+                .cursiveSpace2();
                 text-align: center;
             }        
             .project-card {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                background-color: #aea9a577;
-                border: 3px groove #aea9a577;
+                .flexcolumn();
+                background-color: @cardbg;
+                border: @cardborder;
                 margin: .5em 0 1.5em 0;
                 h3 {
-                    font-family: 'Coming Soon', cursive;
-                    letter-spacing: .2em;
+                    .cursiveSpace2();
                 }
                 h4 {
-                    font-family: 'Coming Soon', cursive;
-                    letter-spacing: .2em;
+                    .cursiveSpace2();
                     text-align: center;
                     width: 75%;
                 }
                 .links {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: center;
-                    align-items: center;
+                    .flexrow();
                     a {
                         padding: 0 1em;
-                        font-family: 'Coming Soon', cursive;
-                        letter-spacing: .2em;
-                        color: black;
+                        .cursiveSpace2();
+                        color: @font;
                     }
                 }
                 img {
@@ -159,37 +120,43 @@ body {
                     padding: .5em;
                 }
             }
+            .row {
+                .flexrow();
+
+                .column {
+                    .flexcolumn();
+                    align-items: flex-start;
+
+                    .row {
+                        .flexrow();
+
+                        .column {
+                            .flexcolumn();
+                        }
+                    }
+                }
+                .formHide {
+                    display: none;
+                }
+            }
     }
     
 
     .resume {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        .flexcolumn();
         h2 {
-            font-family: 'Coming Soon', cursive;
-            letter-spacing: .2em;
+            .cursiveSize12
         }
         .resume-parts {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            .flexcolumn();
             justify-content: space-around;
-            font-family: 'Coming Soon', cursive;
-            letter-spacing: .2em;
+            .cursiveSpace2();
             width: 75%;
             .skills-education {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
+                .flexcolumn();
                 width: 75%;
                 .skills {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
+                    .flexcolumn();
                     .desktop {
                         display: none;
                     }
@@ -202,10 +169,7 @@ body {
                     }
                 }
                 .education {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
+                    .flexcolumn();
                     width: 155%;
                     .desktop {
                         display: none;
@@ -224,10 +188,7 @@ body {
                 }
             }
             .positions {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
+                .flexcolumn();
                 width: 125%;
                 table {
                     tr {
@@ -243,21 +204,14 @@ body {
             }
         }
         h4 {
-            font-family: 'Coming Soon', cursive;
-            letter-spacing: .2em;
+            .cursiveSpace2();
         }
     }
     .contact {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        font-family: 'Coming Soon', cursive;
-        letter-spacing: .2em;
+        .flexcolumn();
+        .cursiveSpace2();
         .reach {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            .flexcolumn();
             width: 75%;
             h2 {
                 text-align: center;
@@ -272,21 +226,16 @@ body {
     }
     footer {
         font-family: 'Bad Script', cursive;
-        background-color: #aea9a5;
+        background-color: @navbg;
         width: 95%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        .flexcolumn();
         letter-spacing: .2em;
         p {
             width: 65%;
             text-align: center;
         }
         .row {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
+            .flexrow();
             justify-content: space-evenly;
             width: 50%;
 

@@ -11,7 +11,17 @@ def index(request):
 
 # ---------- Contact Landing
 def contact(request):
-    return render(request, 'contact.html')
+    contact = Contact.objects.all().values()
+    updateType = UpdateType.objects.all().values()
+    updated = Updated.objects.all().values()
+    context = {
+        'contact': contact,
+        'updated': updated,
+        'updateType': updateType,
+    }
+    print(updated)
+    print(updateType)
+    return render(request, 'contact.html', context)
 
 # ---------- Resume Landing
 def resume(request):
@@ -57,7 +67,10 @@ def organization(request):
 
 # ---------- Admin Landing
 def mainAdmin(request):
-    return render(request, 'admin/enter.html')
+    if "user_id" not in request.session:
+        return render(request, 'admin/enter.html')
+    else:
+        return redirect('/24/dashboard/')
 
 def mainReg(request):
     return render(request, 'admin/register.html')
@@ -68,16 +81,36 @@ def dashboard(request):
         return redirect('/notAuth/')
     else:
         context = {
-            'contact': Contact.objects.all().values()
+            'contact': Contact.objects.all().values(),
+            'types': UpdateType.objects.all(),
+            'allTypes': UpdateType.objects.all().values(),
+            'updated': Updated.objects.all().values(),
         }
         return render(request, 'admin/dashboard.html', context)
 
 def logout(request):
-    request.session.clear()
-    return redirect('/')
+    if 'user_id' not in request.session:
+        return redirect('/')
+    else:
+        request.session.clear()
+        return redirect('/')
 
 def notAuth(request):
     return render(request, 'notAuth.html')
+
+def addProjects(request):
+    if 'user_id' not in request.session:
+        messages.error(request, 'Access Denied.  Please see Admin')
+        return redirect('/notAuth/')
+    else:
+        return render(request, 'admin/addProj.html')
+
+def addResume(request):
+    if 'user_id' not in request.session:
+        messages.error(request, 'Access Denied.  Please see Admin')
+        return redirect('/notAuth/')
+    else:
+        return render(request, 'admin/addResume.html')
 
 
 # -------------------- Create Routes
@@ -126,8 +159,28 @@ def login(request):
 # ---------- Create Education
 
 # ---------- Create Update Type
+def createUpdateType(request):
+    UpdateType.objects.create(
+        typeUpdate=request.POST['typeUpdate'],
+    )
+    return redirect('/24/dashboard/')
 
 # ---------- Created Updated
+def createUpdated(request):
+    Updated.objects.create(
+        whyUpdate=request.POST['whyUpdate'],
+        updatedType_id=request.POST['updatedType'],
+    )
+    return redirect('/24/dashboard/')
+
+# ---------- Created Contact
+def createContact(request):
+    Contact.objects.create(
+        email=request.POST['email'],
+        linkedIn=request.POST['linkedIn'],
+        github=request.POST['github'],
+    )
+    return redirect('/24/dashboard/')
 
 
 # -------------------- Update Routes
