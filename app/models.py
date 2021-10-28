@@ -1,5 +1,23 @@
 from django.db import models
 
+STATUS = (
+    (0, "Current"),
+    (1, "Past")
+)
+TYPE = (
+    (0, "Front End"),
+    (1, "Back End"),
+    (2, "Full Stack"),
+    (3, "Organization")
+)
+UPDATETYPE = (
+    (0, "Current"),
+    (1, "Past"),
+    (2, "All"),
+    (3, "Resume"),
+    (4, "Contact")
+)
+
 class UserManager(models.Manager):
     def validate(self, form):
         errors = {}
@@ -55,19 +73,10 @@ class Education(models.Model):
     gradDate = models.CharField(max_length=50)
     course = models.CharField(max_length=255)
 
-class UpdateType(models.Model):
-    typeUpdate = models.CharField(max_length=255)
-
 class Updated(models.Model):
     whyUpdate = models.CharField(max_length=255)
-    updatedType = models.ForeignKey(UpdateType, related_name='updates', on_delete=models.CASCADE)
+    updateType = models.IntegerField(choices=UPDATETYPE, default=0)
     updatedAt = models.DateField(auto_now=True)
-
-class ProjectType(models.Model):
-    projType = models.CharField(max_length=255)
-
-class ProjectStatus(models.Model):
-    projStatus = models.CharField(max_length=255)
 
 class AllProjects(models.Model):
     projName = models.CharField(max_length=255)
@@ -75,5 +84,5 @@ class AllProjects(models.Model):
     projSource = models.CharField(max_length=255, blank=True)
     projLink = models.CharField(max_length=255, blank=True)
     projOrg = models.CharField(max_length=255, blank=True)
-    theType = models.ForeignKey(ProjectType, related_name='projTypes', on_delete=models.CASCADE)
-    theStatus = models.ForeignKey(ProjectStatus, related_name='projStat', on_delete=models.CASCADE)
+    theType = models.IntegerField(choices=TYPE, default=0)
+    theStatus = models.IntegerField(choices=STATUS, default=0)

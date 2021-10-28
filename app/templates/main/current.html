@@ -37,7 +37,7 @@
             </div>
         {% endfor %}
         {% for u in updateType %}
-            {% if 'Current' in u.typeUpdate %}
+            {% if u.typeUpdate == 'Current' %}
                 {% for a in updated %}
                     <p>Last Update: {{a.updatedAt}}</p>
                 {% endfor %}

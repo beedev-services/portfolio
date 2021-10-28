@@ -30,8 +30,11 @@ def resume(request):
 # ---------- Current Projects Landing
 def current(request):
     currProj = CurrentProject.objects.all().values()
+    updated = Updated.objects.all().values()
     context = {
         'currProj': currProj,
+        'updated': updated,
+        'updateType': updateType,
     }
     # print(currProj)
     return render(request, 'main/current.html', context)
