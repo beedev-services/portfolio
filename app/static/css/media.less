@@ -123,10 +123,36 @@
                 }
             }
             .row {
+                .flexrow();
+
                 .formHide {
                     .flexcolumn();
                     margin: 0 1em;
                     align-items: flex-start;
+                }
+                .column {
+                    .flexcolumn();
+                }
+            }
+            .resume {
+                width: 100%;
+                .flexrow();
+                align-items: flex-start;
+
+                .cResume {
+                    .flexcolumn();
+                    width: 45%;
+                    height: 95%;
+
+                    .skills {
+                        .flexrow();
+                        flex-wrap: wrap;
+
+                        li {
+                            margin: .5em;
+                            padding: .2em;
+                        }
+                    }
                 }
             }
             .data {
@@ -135,11 +161,6 @@
                 .column {
                     margin: 0 1em;
                 }
-            }
-        }
-        .resume {
-            .resume-parts {
-                width: 50%;
             }
         }
     }

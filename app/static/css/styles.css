@@ -199,6 +199,10 @@ body main .project-card img {
   width: 85%;
   padding: 0.5em;
 }
+body main h3 {
+  font-family: 'Coming Soon', cursive;
+  letter-spacing: 0.2em;
+}
 body main .row {
   display: flex;
   flex-direction: row;
@@ -211,6 +215,10 @@ body main .row .column {
   align-items: center;
   justify-content: center;
   align-items: flex-start;
+}
+body main .row .column h3 {
+  font-family: 'Coming Soon', cursive;
+  letter-spacing: 0.2em;
 }
 body main .row .column .row {
   display: flex;
@@ -227,15 +235,14 @@ body main .row .column .row .column {
 body main .row .formHide {
   display: none;
 }
+body main .row .skills li {
+  list-style: none;
+}
 body .resume {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-body .resume h2 {
-  font-family: 'Coming Soon', cursive;
-  font-size: 1.2em;
 }
 body .resume .resume-parts {
   display: flex;
@@ -439,6 +446,12 @@ body footer .row img {
   body main .about-start img {
     width: 25%;
   }
+  body main .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
   body main .row .formHide {
     display: flex;
     flex-direction: column;
@@ -447,14 +460,44 @@ body footer .row img {
     margin: 0 1em;
     align-items: flex-start;
   }
+  body main .row .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  body main .resume {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  body main .resume .cResume {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    height: 95%;
+  }
+  body main .resume .cResume .skills {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  body main .resume .cResume .skills li {
+    margin: 0.5em;
+    padding: 0.2em;
+  }
   body main .data {
     align-items: flex-start;
   }
   body main .data .column {
     margin: 0 1em;
-  }
-  body .resume .resume-parts {
-    width: 50%;
   }
 }
 @media only screen and (min-width: 850px) {

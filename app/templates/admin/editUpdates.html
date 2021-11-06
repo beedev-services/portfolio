@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://images.craftsnherbs.com/beelogo01.jpg">
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
-    <title>Front End - Melissa Longenberger</title>
+    <title>{{update.updateType}} - Admin Dashboard</title>
 </head>
 <body>
     <header>
@@ -19,34 +19,28 @@
         </nav>
         <hr>
         <nav>
-            {% block subMenu %} {% include './subMenu.html' %} {% endblock subMenu %}
+            {% block adminMenu %} {% include './adminMenu.html' %} {% endblock adminMenu %}
         </nav>
     </header>
     <main>
-        <h3>Front End Projects</h3>
-        <div class="column">
-            <h4>Current Front End Projects</h4>
-            {% for f in front %}
-                {% if f.theStatus == 0 %}
-                    <p>{{f.projName}}</p>
-                {% endif %}
-            {% endfor %}
+        <div class="row">
+            <form action="/24/{{update.id}}/updateU/" method='post' class='formHide'>
+                {% csrf_token %}
+                <section>
+                    <label for="whyUpdate">Update Reason: </label>
+                    <input type="text" name='whyUpdate' value='{{update.whyUpdate}}'>
+                </section>
+                <section>
+                    <label for="updateType"></label>
+                    <select name="updateType">
+                        {% for t in types %}
+                            <option value="{{t.id}}">{{t.updateType}}</option>
+                        {% endfor %}
+                    </select>
+                </section>
+                <button>Submit</button>
+            </form>
         </div>
-        <div class="column">
-            <h4>Past Front End Projects</h4>
-            {% for f in front %}
-                {% if f.theStatus == 1 %}
-                    <p>{{f.projName}}</p>
-                {% endif %}
-            {% endfor %}
-        </div>
-        {% for u in updateType %}
-            {% if 'Front' in u.typeUpdate %}
-                {% for a in updated %}
-                    <p>Last Update: {{a.updatedAt}}</p>
-                {% endfor %}
-            {% endif %}
-        {% endfor %}
     </main>
     {% block footer %} {% include '../footer.html' %} {% endblock footer %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

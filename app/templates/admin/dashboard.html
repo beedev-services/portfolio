@@ -47,8 +47,8 @@
                     <input type="text" name='whyUpdate'>
                 </section>
                 <section>
-                    <label for="updatedType"></label>
-                    <select name="updatedType">
+                    <label for="updateType"></label>
+                    <select name="updateType">
                         {% for t in types %}
                             <option value="{{t.id}}">{{t.updateType}}</option>
                         {% endfor %}
@@ -69,7 +69,7 @@
             <div class="column">
                 <h3>Update Log</h3>
                 {% for u in updated %}
-                    <p>Update Reason: {{u.whyUpdate}}<br>Last Update: {{u.updatedAt}}</p>
+                    <p>Update Reason: {{u.whyUpdate}}<br>Last Update: {{u.updatedAt}}<br><a href="/24/{{u.id}}/editU/">Edit</a></p>
                 {% endfor %}
             </div>
         </div>

@@ -135,6 +135,12 @@
   body main .about-start img {
     width: 25%;
   }
+  body main .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
   body main .row .formHide {
     display: flex;
     flex-direction: column;
@@ -143,14 +149,44 @@
     margin: 0 1em;
     align-items: flex-start;
   }
+  body main .row .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  body main .resume {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  body main .resume .cResume {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    height: 95%;
+  }
+  body main .resume .cResume .skills {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  body main .resume .cResume .skills li {
+    margin: 0.5em;
+    padding: 0.2em;
+  }
   body main .data {
     align-items: flex-start;
   }
   body main .data .column {
     margin: 0 1em;
-  }
-  body .resume .resume-parts {
-    width: 50%;
   }
 }
 @media only screen and (min-width: 850px) {

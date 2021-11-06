@@ -51,6 +51,7 @@ class CurrentProject(models.Model):
     currImg = models.CharField(max_length=255)
     currSource = models.CharField(max_length=255, blank=True)
     currLink = models.CharField(max_length=255, blank=True)
+    cOrder = models.IntegerField()
 
 class PastProject(models.Model):
     pastName = models.CharField(max_length=255)
@@ -58,6 +59,7 @@ class PastProject(models.Model):
     pastImg = models.CharField(max_length=255)
     pastSource = models.CharField(max_length=255, blank=True)
     pastLink = models.CharField(max_length=255, blank=True)
+    pOrder = models.IntegerField()
 
 class Skill(models.Model):
     skillName = models.CharField(max_length=50, unique=True)
@@ -66,12 +68,17 @@ class Work(models.Model):
     position = models.CharField(max_length=255)
     company = models.CharField(max_length=255)
     dates = models.CharField(max_length=255)
-    jobDesc = models.TextField()
+    jobDesc01 = models.CharField(max_length=100)
+    jobDesc02 = models.CharField(max_length=100, blank=True)
+    jobDesc03 = models.CharField(max_length=100, blank=True)
+    jobDesc04 = models.CharField(max_length=100, blank=True)
+    wOrder = models.IntegerField()
 
 class Education(models.Model):
     school = models.CharField(max_length=255)
     gradDate = models.CharField(max_length=50)
     course = models.CharField(max_length=255)
+    eOrder = models.IntegerField()
 
 class Updated(models.Model):
     whyUpdate = models.CharField(max_length=255)

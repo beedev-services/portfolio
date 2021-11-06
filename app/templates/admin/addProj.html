@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://images.craftsnherbs.com/beelogo01.jpg">
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
-    <title>Register - Melissa Longenberger</title>
+    <title>Add Projects - Melissa Longenberger</title>
 </head>
 <body>
     <header>
@@ -24,7 +24,7 @@
     </header>
     <main>
         <div class="row">
-            <form action="/24/createCurrent" method='post' class="hideForm">
+            <form action="/24/createCurr/" method='post' class="hideForm">
                 {% csrf_token %}
                 <h4>Current Project Form</h4>
                 <section>
@@ -45,7 +45,11 @@
                 </section>
                 <section>
                     <label for="currLink">Live Link: </label>
-                    <input type="text" name='currName'>
+                    <input type="text" name='currLink'>
+                </section>
+                <section>
+                    <label for="cOrder">Order: </label>
+                    <input type="number" name="cOrder">
                 </section>
                 <button>Submit</button>
             </form>
@@ -72,11 +76,15 @@
                     <label for="pastLink">Live Link: </label>
                     <input type="text" name='pastLink'>
                 </section>
+                <section>
+                    <label for="pOrder">Order: </label>
+                    <input type="number" name="pOrder">
+                </section>
                 <button>Submit</button>
             </form>
         </div>
         <div class="row">
-            <form action="/24/createProjType/" method='post' class="hideForm">
+            <!-- <form action="/24/createProjType/" method='post' class="hideForm">
                 {% csrf_token %}
                 <h4>Project Type Form</h4>
                 <section>
@@ -84,8 +92,8 @@
                     <input type="text" name='projType'>
                 </section>
                 <button>Submit</button>
-            </form>
-            <form action="/24/createProjStatus/" method='post' class="hideForm">
+            </form> -->
+            <!-- <form action="/24/createProjStatus/" method='post' class="hideForm">
                 {% csrf_token %}
                 <h4>Project Status Form</h4>
                 <section>
@@ -93,7 +101,7 @@
                     <input type="text" name='projStatus'>
                 </section>
                 <button>Submit</button>
-            </form>
+            </form> -->
             <form action="/24/createAllProj/" method='post' class="hideForm">
                 {% csrf_token %}
                 <h4>All Projects Form</h4>
@@ -120,8 +128,8 @@
                 <section>
                     <label for="theType">Project Type: </label>
                     <select name="theType">
-                        {% for t in types %}
-                            <option value="{{t.id}}">{{t.projType}}</option>
+                        {% for t in type %}
+                            <option value="{{t.id}}">{{t.type}}</option>
                         {% endfor %}
                     </select>
                 </section>
@@ -129,10 +137,11 @@
                     <label for="theStatus">Project Status: </label>
                     <select name="theStatus">
                         {% for s in status %}
-                            <option value="{{s.id}}">{{s.projStatus}}</option>
+                            <option value="{{s.id}}">{{s.status}}</option>
                         {% endfor %}
                     </select>
                 </section>
+                <button>Submit</button>
             </form>
         </div>
         <div class="row">
@@ -153,33 +162,15 @@
         <div class="row data">
             <div class="column">
                 <h4>Current</h4>
-                <div class="row">
-                    <div class="column">
-                        {% for s in projStat %}
-                            {% if 'Current' in s.projStatus %}
-                                {% for t in projType %}
-                                    {% if 'Front' in t.projType %}
-                                        {% for a in allProj %}
-                                            <p>Project Name: {{a.projName}}</p>
-                                        {% endfor %}
-                                    {% endif %}
-                                {% endfor %}
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                    <div class="column"></div>
-                    <div class="column"></div>
-                    <div class="column"></div>
-                </div>
+                {% for c in cAll %}
+                    <p>Project Name: {{c.projName}}</p>
+                {% endfor %}
             </div>
             <div class="column">
                 <h4>Past</h4>
-                <div class="row">
-                    <div class="column"></div>
-                    <div class="column"></div>
-                    <div class="column"></div>
-                    <div class="column"></div>
-                </div>
+                {% for p in pAll %}
+                    <p>Project Name: {{p.projName}}</p>
+                {% endfor %}
             </div>
         </div>
     </main>

@@ -19,13 +19,61 @@
         </nav>
     </header>
     <main>
-
-        {% for u in updateType %}
-            {% if 'Resume' in u.typeUpdate %}
-                {% for a in updated %}
-                    <p>Last Update: {{a.updatedAt}}</p>
-                {% endfor %}
-            {% endif %}
+        <h2>Virtual Resume</h2>
+        <div class="row resume">
+            <div class="column cResume">
+                <h3>Skills:</h3>
+                <ul class='skills'>
+                    {% for s in skills %}
+                    <li>{{s.skillName}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="column cResume">
+                <h3>Education:</h3>
+                <table>
+                    {% for e in ed %}
+                        <tr>
+                            <th>{{e.school}}</th>
+                            <td> -- {{e.gradDate}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{e.course}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <h3>Work History:</h3>
+        <table>
+            {% for w in work %}
+                <tr>
+                    <th>{{w.position}}</th>
+                    <th> -- {{w.company}}</th>
+                    <th>    {{w.dates}}</th>
+                </tr>
+                <tr>
+                    <td colspan="3">* {{w.jobDesc01}}</td>
+                </tr>
+                <tr>
+                    {% if w.jobDesc02 != '' %}
+                    <td colspan="3">* {{w.jobDesc02}}</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    {% if w.jobDesc03 != '' %}
+                    <td colspan="3">* {{w.jobDesc03}}</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    {% if w.jobDesc04 != '' %}
+                    <td colspan="3">* {{w.jobDesc04}}</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+        {% for u in updated %}
+            <p>Last Updated on {{u.updatedAt}}</p>
         {% endfor %}
     </main>
     {% block footer %} {% include 'footer.html' %} {% endblock footer %}

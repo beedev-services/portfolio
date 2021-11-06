@@ -22,11 +22,21 @@ def contact(request):
 
 # ---------- Resume Landing
 def resume(request):
-    return render(request, 'resume.html')
+    skills = Skill.objects.order_by('skillName')
+    ed = Education.objects.order_by('eOrder', 'school')
+    work = Work.objects.order_by('wOrder', 'company')
+    updated = Updated.objects.filter(updateType=3)
+    context = {
+        'skills': skills,
+        'ed': ed,
+        'work': work,
+        'updated': updated,
+    }
+    return render(request, 'resume.html', context)
 
 # ---------- Current Projects Landing
 def current(request):
-    currProj = CurrentProject.objects.all().values()
+    currProj = CurrentProject.objects.order_by('cOrder')
     updated = Updated.objects.all().values()
     context = {
         'currProj': currProj,
@@ -37,7 +47,7 @@ def current(request):
 
 # ---------- Past Projects Landing
 def past(request):
-    pastProj = PastProject.objects.all().values()
+    pastProj = PastProject.objects.order_by('pOrder')
     context = {
         'pastProj': pastProj,
     }
@@ -50,11 +60,19 @@ def allProjects(request):
 
 # ---------- Front End Projects
 def frontEnd(request):
-    return render(request, 'allProjects/frontEnd.html')
+    front = AllProjects.objects.filter(theType=0)
+    context = {
+        'front': front,
+    }
+    return render(request, 'allProjects/frontEnd.html', context)
 
 # ---------- Back End Projects
 def backEnd(request):
-    return render(request, 'allProjects/backEnd.html')
+    back = AllProjects.objects.filter(theType=1)
+    context = {
+        'back': back,
+    }
+    return render(request, 'allProjects/backEnd.html', context)
 
 # ---------- Full Stack Projects
 def fullStack(request):
@@ -79,13 +97,14 @@ def dashboard(request):
         messages.error(request, 'Access Denied.  Please see Admin')
         return redirect('/notAuth/')
     else:
-        types = UPDATETYPE
+        # types = UPDATETYPE
+        updated = Updated.objects.all().values()
         context = {
             'contact': Contact.objects.all().values(),
             'updated': Updated.objects.all().values(),
             'types': UPDATETYPE,
         }
-        print(types)
+        print("updates:", updated)
         return render(request, 'admin/dashboard.html', context)
 
 def logout(request):
@@ -103,7 +122,22 @@ def addProjects(request):
         messages.error(request, 'Access Denied.  Please see Admin')
         return redirect('/notAuth/')
     else:
-        return render(request, 'admin/addProj.html')
+        current=CurrentProject.objects.order_by('cOrder')
+        past=PastProject.objects.order_by('pOrder')
+        # all=AllProjects.objects.all().values()
+        cAll=AllProjects.objects.filter(theStatus=0)
+        pAll=AllProjects.objects.filter(theStatus=1)
+        context = {
+            'status': STATUS,
+            'type': TYPE,
+            'current': current,
+            'past': past,
+            'cAll': cAll,
+            'pAll': pAll,
+        }
+        # print("allProj: ", all)
+        # print("allcurrent: ", cAll)
+        return render(request, 'admin/addProj.html', context)
 
 def addResume(request):
     if 'user_id' not in request.session:
@@ -146,24 +180,80 @@ def login(request):
     messages.error(request, 'That Username is not in our system, Please see Admin to gain access')
     return redirect('/notAuth/')
 
-# ---------- Create Project Type
-
 # ---------- Create Current Projects
+def createCurr(request):
+    CurrentProject.objects.create(
+        currName=request.POST['currName'],
+        currDesc=request.POST['currDesc'],
+        currImg=request.POST['currImg'],
+        currSource=request.POST['currSource'],
+        currLink=request.POST['currLink'],
+        cOrder=request.POST['cOrder'],
+    )
+    return redirect('/24/projects/')
 
 # ---------- Create Past Projects
+def createPast(request):
+    PastProject.objects.create(
+        pastName=request.POST['pastName'],
+        pastDesc=request.POST['pastDesc'],
+        pastImg=request.POST['pastImg'],
+        pastSource=request.POST['pastSource'],
+        pastLink=request.POST['pastLink'],
+        pOrder=request.POST['pOrder'],
+    )
+    return redirect('/24/projects/')
+
+# ---------- Create All Project
+def createAllProj(request):
+    AllProjects.objects.create(
+        projName=request.POST['projName'],
+        projDesc=request.POST['projDesc'],
+        projSource=request.POST['projSource'],
+        projLink=request.POST['projLink'],
+        projOrg=request.POST['projOrg'],
+        theType=request.POST['theType'],
+        theStatus=request.POST['theStatus']
+    )
+    return redirect('/24/projects/')
 
 # ---------- Create Skill
+def createSkill(request):
+    Skill.objects.create(
+        skillName=request.POST['skillName'],
+    )
+    return redirect('/24/resume/')
 
 # ---------- Create Work
+def createWork(request):
+    Work.objects.create(
+        position=request.POST['position'],
+        company=request.POST['company'],
+        dates=request.POST['dates'],
+        jobDesc01=request.POST['jobDesc01'],
+        jobDesc02=request.POST['jobDesc02'],
+        jobDesc03=request.POST['jobDesc03'],
+        jobDesc04=request.POST['jobDesc04'],
+        wOrder=request.POST['wOrder'],
+    )
+    return redirect('/24/resume/')
 
 # ---------- Create Education
+def createEd(request):
+    Education.objects.create(
+        school=request.POST['school'],
+        gradDate=request.POST['gradDate'],
+        course=request.POST['course'],
+        eOrder=request.POST['eOrder'],
+    )
+    return redirect('/24/resume/')
 
 
 # ---------- Created Updated
 def createUpdated(request):
     Updated.objects.create(
         whyUpdate=request.POST['whyUpdate'],
-        updateType_id=request.POST['updateType'],
+        updateType=request.POST['updateType'],
     )
     return redirect('/24/dashboard/')
 
@@ -175,6 +265,22 @@ def createContact(request):
         github=request.POST['github'],
     )
     return redirect('/24/dashboard/')
+
+
+# -------------------- Edit Routes
+
+# ---------- Update Updated
+def editU(request, updated_id):
+    if 'user_id' not in request.session:
+        messages.error(request, 'Access Denied.  Please see Admin')
+        return redirect('/notAuth/')
+    else:
+        update = Updated.objects.get(id=updated_id)
+        context = {
+            'update': update,
+            'types': UPDATETYPE,
+        }
+        return render(request, 'admin/editUpdates.html', context)
 
 
 # -------------------- Update Routes
@@ -192,9 +298,14 @@ def createContact(request):
 
 # ---------- Update Education
 
-# ---------- Update Update Type
-
 # ---------- Update Updated
+def updateU(request, updated_id):
+    toUpdate = Updated.objects.get(id=updated_id)
+    toUpdate.whyUpdate=request.POST['whyUpdate']
+    toUpdate.updateType=request.POST['updateType']
+    toUpdate.save()
+    return redirect('/24/dashboard/')
+
 
 
 # -------------------- Delete Routes

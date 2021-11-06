@@ -120,12 +120,19 @@ body {
                     padding: .5em;
                 }
             }
+            h3 {
+                .cursiveSpace2();
+            }
             .row {
                 .flexrow();
 
                 .column {
                     .flexcolumn();
                     align-items: flex-start;
+
+                    h3 {
+                        .cursiveSpace2();
+                    }
 
                     .row {
                         .flexrow();
@@ -138,15 +145,18 @@ body {
                 .formHide {
                     display: none;
                 }
+                .skills {
+                    li {
+                        list-style: none;
+                    }
+                }
             }
     }
     
 
     .resume {
         .flexcolumn();
-        h2 {
-            .cursiveSize12
-        }
+        
         .resume-parts {
             .flexcolumn();
             justify-content: space-around;
