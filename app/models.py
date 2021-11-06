@@ -1,22 +1,22 @@
 from django.db import models
 
-STATUS = (
-    (0, "Current"),
-    (1, "Past")
-)
-TYPE = (
-    (0, "Front End"),
-    (1, "Back End"),
-    (2, "Full Stack"),
-    (3, "Organization")
-)
-UPDATETYPE = (
-    (0, "Current"),
-    (1, "Past"),
-    (2, "All"),
-    (3, "Resume"),
-    (4, "Contact")
-)
+STATUS = [
+    {"id": 0, "status": "Current"},
+    {"id": 1, "status": "Past"}
+]
+TYPE = [
+    {"id": 0, "type": "Front End"},
+    {"id": 1, "type": "Back End"},
+    {"id": 2, "type": "Full Stack"},
+    {"id": 3, "type": "Organization"}
+]
+UPDATETYPE = [
+    {"id": 0, "updateType": "Current"},
+    {"id": 1, "updateType": "Past"},
+    {"id": 2, "updateType": "All"},
+    {"id": 3, "updateType": "Resume"},
+    {"id": 4, "updateType": "Contact"}
+]
 
 class UserManager(models.Manager):
     def validate(self, form):

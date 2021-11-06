@@ -12,15 +12,12 @@ def index(request):
 # ---------- Contact Landing
 def contact(request):
     contact = Contact.objects.all().values()
-    updateType = UpdateType.objects.all().values()
     updated = Updated.objects.all().values()
     context = {
         'contact': contact,
         'updated': updated,
-        'updateType': updateType,
     }
     print(updated)
-    print(updateType)
     return render(request, 'contact.html', context)
 
 # ---------- Resume Landing
@@ -34,7 +31,6 @@ def current(request):
     context = {
         'currProj': currProj,
         'updated': updated,
-        'updateType': updateType,
     }
     # print(currProj)
     return render(request, 'main/current.html', context)
@@ -83,12 +79,13 @@ def dashboard(request):
         messages.error(request, 'Access Denied.  Please see Admin')
         return redirect('/notAuth/')
     else:
+        types = UPDATETYPE
         context = {
             'contact': Contact.objects.all().values(),
-            'types': UpdateType.objects.all(),
-            'allTypes': UpdateType.objects.all().values(),
             'updated': Updated.objects.all().values(),
+            'types': UPDATETYPE,
         }
+        print(types)
         return render(request, 'admin/dashboard.html', context)
 
 def logout(request):
@@ -161,18 +158,12 @@ def login(request):
 
 # ---------- Create Education
 
-# ---------- Create Update Type
-def createUpdateType(request):
-    UpdateType.objects.create(
-        typeUpdate=request.POST['typeUpdate'],
-    )
-    return redirect('/24/dashboard/')
 
 # ---------- Created Updated
 def createUpdated(request):
     Updated.objects.create(
         whyUpdate=request.POST['whyUpdate'],
-        updatedType_id=request.POST['updatedType'],
+        updateType_id=request.POST['updateType'],
     )
     return redirect('/24/dashboard/')
 

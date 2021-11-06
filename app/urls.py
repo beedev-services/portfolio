@@ -17,7 +17,6 @@ urlpatterns = [
     path('24/register/', views.register),
     path('24/dashboard/', views.dashboard),
     path('24/createContact/', views.createContact),
-    path('24/createUpdateType/', views.createUpdateType),
     path('24/createUpdated/', views.createUpdated),
     path('24/resume/', views.addResume),
     path('24/projects/', views.addProjects),
