@@ -25,8 +25,6 @@ urlpatterns = [
     path('24/dashboard/', views.dashboard),
     # Contact Pages
     path('24/createC/', views.createC),
-    path('24/<int:contact_id>/editC', views.editC),
-    path('24/<int:contact_id>/updateC', views.updateC),
     # Update Pages
     path('24/createU/', views.createU),
     path('24/<int:updated_id>/editU/', views.editU),
@@ -36,6 +34,8 @@ urlpatterns = [
     path('24/createCurr/', views.createCurr),
     path('24/createPast/', views.createPast),
     path('24/createAllProj/', views.createAllProj),
+    path('24/<int:allprojects_id>/editAllProj/', views.editAllProj),
+    path('24/<int:allprojects_id>/updateAllProj/', views.updateAllProj),
     # Resume
     path('24/resume/', views.addResume),
     path('24/createSkill/', views.createSkill),

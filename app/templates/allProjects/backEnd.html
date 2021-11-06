@@ -23,13 +23,25 @@
         </nav>
     </header>
     <main>
-
-        {% for u in updateType %}
-            {% if 'Back' in u.typeUpdate %}
-                {% for a in updated %}
-                    <p>Last Update: {{a.updatedAt}}</p>
-                {% endfor %}
-            {% endif %}
+        <h3>Back End Projects</h3>
+        <div class="column">
+            <h4>Current Back End Projects</h4>
+            {% for b in back %}
+                {% if b.theStatus == 0 %}
+                    <p>{{b.projName}}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="column">
+            <h4>Past Back End Projects</h4>
+            {% for b in back %}
+                {% if b.theStatus == 1 %}
+                    <p>{{b.projName}}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% for u in updated %}
+            <p>Last Updated on {{u.updatedAt}}</p>
         {% endfor %}
     </main>
     {% block footer %} {% include '../footer.html' %} {% endblock footer %}

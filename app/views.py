@@ -37,7 +37,7 @@ def resume(request):
 # ---------- Current Projects Landing
 def current(request):
     currProj = CurrentProject.objects.order_by('cOrder')
-    updated = Updated.objects.all().values()
+    updated = Updated.objects.filter(updateType=0)
     context = {
         'currProj': currProj,
         'updated': updated,
@@ -48,8 +48,10 @@ def current(request):
 # ---------- Past Projects Landing
 def past(request):
     pastProj = PastProject.objects.order_by('pOrder')
+    updated = Updated.objects.filter(updateType=1)
     context = {
         'pastProj': pastProj,
+        'updated': updated,
     }
     print(pastProj)
     return render(request, 'main/past.html', context)
@@ -61,26 +63,42 @@ def allProjects(request):
 # ---------- Front End Projects
 def frontEnd(request):
     front = AllProjects.objects.filter(theType=0)
+    updated = Updated.objects.filter(updateType=6)
     context = {
         'front': front,
+        'updated': updated,
     }
     return render(request, 'allProjects/frontEnd.html', context)
 
 # ---------- Back End Projects
 def backEnd(request):
     back = AllProjects.objects.filter(theType=1)
+    updated = Updated.objects.filter(updateType=7)
     context = {
         'back': back,
+        'updated': updated,
     }
     return render(request, 'allProjects/backEnd.html', context)
 
 # ---------- Full Stack Projects
 def fullStack(request):
-    return render(request, 'allProjects/fullStack.html')
+    full = AllProjects.objects.filter(theType=2)
+    updated = Updated.objects.filter(updateType=2)
+    context = {
+        'full': full,
+        'updated': updated,
+    }
+    return render(request, 'allProjects/fullStack.html', context)
 
 # ---------- Organization Projects
 def organization(request):
-    return render(request, 'allProjects/organizations.html')
+    org = AllProjects.objects.filter(theType=3)
+    updated = Updated.objects.filter(updateType=5)
+    context = {
+        'org': org,
+        'updated': updated,
+    }
+    return render(request, 'allProjects/organizations.html', context)
 
 # ---------- Admin Landing
 def mainAdmin(request):
@@ -124,7 +142,6 @@ def addProjects(request):
     else:
         current=CurrentProject.objects.order_by('cOrder')
         past=PastProject.objects.order_by('pOrder')
-        # all=AllProjects.objects.all().values()
         cAll=AllProjects.objects.filter(theStatus=0)
         pAll=AllProjects.objects.filter(theStatus=1)
         context = {
@@ -135,8 +152,6 @@ def addProjects(request):
             'cAll': cAll,
             'pAll': pAll,
         }
-        # print("allProj: ", all)
-        # print("allcurrent: ", cAll)
         return render(request, 'admin/addProj.html', context)
 
 def addResume(request):
@@ -281,32 +296,22 @@ def editU(request, updated_id):
         }
         return render(request, 'admin/edits/editUpdates.html', context)
 
-# ---------- edit Contact
-def editC(request, contact_id):
+def editAllProj(request, allprojects_id):
     if 'user_id' not in request.session:
         messages.error(request, 'Access Denied.  Please see Admin')
         return redirect('/notAuth/')
     else:
-        contact = Contact.objects.get(id=contact_id)
+        proj = AllProjects.objects.get(id=allprojects_id)
         context = {
-            'contact': contact,
+            'proj': proj,
+            'status': STATUS,
+            'type': TYPE,
         }
-        return render(request, 'admin/edits/editContacts.html', context)
+        return render(request, 'admin/edits/editAllProj.html', context)
+
 
 # -------------------- Update Routes
 
-
-# ---------- Update Project Type
-
-# ---------- Update Current Projects
-
-# ---------- Update Past Projects
-
-# ---------- Update Skill
-
-# ---------- Update Work
-
-# ---------- Update Education
 
 # ---------- Update Updated
 def updateU(request, updated_id):
@@ -316,32 +321,14 @@ def updateU(request, updated_id):
     toUpdate.save()
     return redirect('/24/dashboard/')
 
-# ---------- Update Contact
-def updateC(request, contact_id):
-    toUpdate = Contact.objects.get(id=contact_id)
-    toUpdate.email=request.POST['email']
-    toUpdate.linkedIn=request.POST['linkedIn']
-    tpUpdate.github=request.POST['github']
+def updateAllProj(request, allprojects_id):
+    toUpdate = AllProjects.objects.get(id=allprojects_id)
+    toUpdate.projName=request.POST['projName']
+    toUpdate.projDesc=request.POST['projDesc']
+    toUpdate.projSource=request.POST['projSource']
+    toUpdate.projLink=request.POST['projLink']
+    toUpdate.projOrg=request.POST['projOrg']
+    toUpdate.theType=request.POST['theType']
+    toUpdate.theStatus=request.POST['theStatus']
     toUpdate.save()
-    return redirect('/24/dashboard/')
-
-
-
-# -------------------- Delete Routes
-
-
-# ---------- Delete Project Type
-
-# ---------- Delete Current Projects
-
-# ---------- Delete Past Projects
-
-# ---------- Delete Skill
-
-# ---------- Delete Work
-
-# ---------- Delete Education
-
-# ---------- Delete Update Type
-
-# ---------- Delete Updated
+    return redirect('/24/projects/')

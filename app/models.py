@@ -13,9 +13,12 @@ TYPE = [
 UPDATETYPE = [
     {"id": 0, "updateType": "Current"},
     {"id": 1, "updateType": "Past"},
-    {"id": 2, "updateType": "All"},
+    {"id": 2, "updateType": "Full Stack"},
     {"id": 3, "updateType": "Resume"},
-    {"id": 4, "updateType": "Contact"}
+    {"id": 4, "updateType": "Contact"},
+    {"id": 5, "updateType": "Organization"},
+    {"id": 6, "updateType": "Front End"},
+    {"id": 7, "updateType": "Back End"}
 ]
 
 class UserManager(models.Manager):
