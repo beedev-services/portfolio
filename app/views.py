@@ -12,7 +12,7 @@ def index(request):
 # ---------- Contact Landing
 def contact(request):
     contact = Contact.objects.all().values()
-    updated = Updated.objects.all().values()
+    updated = Updated.objects.filter(updateType=4)
     context = {
         'contact': contact,
         'updated': updated,
@@ -248,9 +248,8 @@ def createEd(request):
     )
     return redirect('/24/resume/')
 
-
 # ---------- Created Updated
-def createUpdated(request):
+def createU(request):
     Updated.objects.create(
         whyUpdate=request.POST['whyUpdate'],
         updateType=request.POST['updateType'],
@@ -258,7 +257,7 @@ def createUpdated(request):
     return redirect('/24/dashboard/')
 
 # ---------- Created Contact
-def createContact(request):
+def createC(request):
     Contact.objects.create(
         email=request.POST['email'],
         linkedIn=request.POST['linkedIn'],
@@ -269,7 +268,7 @@ def createContact(request):
 
 # -------------------- Edit Routes
 
-# ---------- Update Updated
+# ---------- edit Updated
 def editU(request, updated_id):
     if 'user_id' not in request.session:
         messages.error(request, 'Access Denied.  Please see Admin')
@@ -280,8 +279,19 @@ def editU(request, updated_id):
             'update': update,
             'types': UPDATETYPE,
         }
-        return render(request, 'admin/editUpdates.html', context)
+        return render(request, 'admin/edits/editUpdates.html', context)
 
+# ---------- edit Contact
+def editC(request, contact_id):
+    if 'user_id' not in request.session:
+        messages.error(request, 'Access Denied.  Please see Admin')
+        return redirect('/notAuth/')
+    else:
+        contact = Contact.objects.get(id=contact_id)
+        context = {
+            'contact': contact,
+        }
+        return render(request, 'admin/edits/editContacts.html', context)
 
 # -------------------- Update Routes
 
@@ -303,6 +313,15 @@ def updateU(request, updated_id):
     toUpdate = Updated.objects.get(id=updated_id)
     toUpdate.whyUpdate=request.POST['whyUpdate']
     toUpdate.updateType=request.POST['updateType']
+    toUpdate.save()
+    return redirect('/24/dashboard/')
+
+# ---------- Update Contact
+def updateC(request, contact_id):
+    toUpdate = Contact.objects.get(id=contact_id)
+    toUpdate.email=request.POST['email']
+    toUpdate.linkedIn=request.POST['linkedIn']
+    tpUpdate.github=request.POST['github']
     toUpdate.save()
     return redirect('/24/dashboard/')
 
