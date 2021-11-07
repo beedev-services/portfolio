@@ -36,12 +36,8 @@
                 <img src="{{past.pastImg}}" alt="{{past.pastName}}">
             </div>
         {% endfor %}
-        {% for u in updateType %}
-            {% if 'Past' in u.typeUpdate %}
-                {% for a in updated %}
-                    <p>Last Update: {{a.updatedAt}}</p>
-                {% endfor %}
-            {% endif %}
+        {% for u in updated %}
+            <p>Last Updated on {{u.updatedAt}}</p>
         {% endfor %}
     </main>
     {% block footer %} {% include '../footer.html' %} {% endblock footer %}

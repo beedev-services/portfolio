@@ -28,6 +28,11 @@
                     <li>{{s.skillName}}</li>
                     {% endfor %}
                 </ul>
+                <div class="smallResume">
+                    {% for s in skills %}
+                        <span>{{s.skillName}}</span>
+                    {% endfor %}
+                </div>
             </div>
             <div class="column cResume">
                 <h3>Education:</h3>
@@ -38,7 +43,7 @@
                             <td> -- {{e.gradDate}}</td>
                         </tr>
                         <tr>
-                            <td>{{e.course}}</td>
+                            <td colspan="2" class='colspan'>{{e.course}}</td>
                         </tr>
                     {% endfor %}
                 </table>
@@ -53,21 +58,21 @@
                     <th>    {{w.dates}}</th>
                 </tr>
                 <tr>
-                    <td colspan="3">* {{w.jobDesc01}}</td>
+                    <td colspan="3" class='colspan'>* {{w.jobDesc01}}</td>
                 </tr>
                 <tr>
                     {% if w.jobDesc02 != '' %}
-                    <td colspan="3">* {{w.jobDesc02}}</td>
+                    <td colspan="3" class='colspan'>* {{w.jobDesc02}}</td>
                     {% endif %}
                 </tr>
                 <tr>
                     {% if w.jobDesc03 != '' %}
-                    <td colspan="3">* {{w.jobDesc03}}</td>
+                    <td colspan="3" class='colspan'>* {{w.jobDesc03}}</td>
                     {% endif %}
                 </tr>
                 <tr>
                     {% if w.jobDesc04 != '' %}
-                    <td colspan="3">* {{w.jobDesc04}}</td>
+                    <td colspan="3" class='colspan'>* {{w.jobDesc04}}</td>
                     {% endif %}
                 </tr>
             {% endfor %}

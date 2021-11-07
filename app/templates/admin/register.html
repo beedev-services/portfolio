@@ -30,22 +30,24 @@
             {% endfor %}
         </section>
         {% endif %}
-        <form action='/24/register/' method='post'>
-            {% csrf_token %}
-            <section>
-                <label for='username'>Username:</label>
-                <input type='text' name='username' id='username'>
-            </section>
-            <section>
-                <label for='password'>Password:</label>
-                <input type='password' name='password' id='password'>
-            </section>
-            <section>
-                <label for='confirm'>Confirm Password</label>
-                <input type='password' name='confirm' id='confirm'>
-            </section>
-            <button>Submit and Login</button>
-        </form>
+        <div class="row smallRow">
+            <form action='/24/register/' method='post'>
+                {% csrf_token %}
+                <section>
+                    <label for='username'>Username:</label>
+                    <input type='text' name='username' id='username'>
+                </section>
+                <section>
+                    <label for='password'>Password:</label>
+                    <input type='password' name='password' id='password'>
+                </section>
+                <section>
+                    <label for='confirm'>Confirm Password</label>
+                    <input type='password' name='confirm' id='confirm'>
+                </section>
+                <button>Submit and Login</button>
+            </form>
+        </div>
     </main>
     {% block footer %} {% include '../footer.html' %} {% endblock footer %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

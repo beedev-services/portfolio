@@ -36,11 +36,9 @@
                 <img src="{{curr.currImg}}" alt="{{curr.currName}}">
             </div>
         {% endfor %}
-            {% for u in updated %}
-                {% if u.updateType == 0 %}
-                    <p>Last Update: {{a.updatedAt}}</p>
-                {% endif %}
-            {% endfor %}
+        {% for u in updated %}
+            <p>Last Updated on {{u.updatedAt}}</p>
+        {% endfor %}
     </main>
     {% block footer %} {% include '../footer.html' %} {% endblock footer %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

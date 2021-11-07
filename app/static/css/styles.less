@@ -32,6 +32,7 @@ body {
             .flexcolumn();
             width: 95%;
             background-color: @navbg;
+            padding: .2em 0;
 
             .navbar {
                 display: none;
@@ -39,19 +40,20 @@ body {
             .nav-small {
                 .flexcolumn();
                 justify-content: space-around;
+                width: 95%;
 
                 .button {
                     .cursiveSize12();
                     border: @linkborder;
                 }
-                #hideMenu {
+                #hideMenu, #hideSubMenu {
                     display: none;
 
                     .nav-option {
                         text-decoration: none;
                         cursor: pointer;
                         font-family: 'Coming Soon', cursive;
-                        width: 95%;
+                        width: 100%;
                         text-align: center;
                         color: inherit;
                         &:hover {
@@ -87,6 +89,10 @@ body {
                     .cursiveSize12();
                 }
             }
+            h1 {
+                .cursiveSpace2();
+                text-align: center;
+            }
             h2 {
                 .cursiveSpace2();
             }
@@ -94,6 +100,127 @@ body {
                 .cursiveSpace2();
                 text-align: center;
             }        
+            h3 {
+                .cursiveSpace2();
+            }
+            .row {
+                .flexrow();
+
+                .column {
+                    .flexcolumn();
+                    align-items: flex-start;
+
+                    h3 {
+                        .cursiveSpace2();
+                    }
+
+                    .row {
+                        .flexrow();
+
+                        .column {
+                            .flexcolumn();
+                        }
+                    }
+                }
+                .skills {
+                    li {
+                        list-style: none;
+                    }
+                }
+            }
+            p {
+                .cursiveSize12();
+            }
+            .resume {
+                .flexcolumn();
+
+                .cResume {
+                    .flexcolumn();
+
+                    .skills {
+                        display: none;
+                    }
+                    .smallResume {
+                        .flexcolumn();
+
+                        span {
+                            margin: .1em;
+                            .cursiveSize12();
+                        }
+                    }
+                    table {
+                        .cursiveSpace2();
+
+                        tr {
+                            .colspan {
+                                text-align: left;
+                            }
+                        }
+                    }
+                }
+            }
+            table {
+                .cursiveSpace2();
+
+                tr {
+                    .colspan {
+                        text-align: left;
+                    }
+                }
+            }
+            .contact {
+                display: none;
+            }
+            .smallContact {
+                .flexcolumn();
+
+                p {
+                    text-align: center;
+                }
+            }
+            .smallRow {
+                .flexcolumn();
+
+                .project-card {
+                    .flexcolumn();
+                    background-color: @cardbg;
+                    border: @cardborder;
+                    margin: .5em 0 1.5em 0;
+                    h3 {
+                        .cursiveSpace2();
+                    }
+                    h4 {
+                        .cursiveSpace2();
+                        text-align: center;
+                        width: 75%;
+                    }
+                    .links {
+                        .flexrow();
+                        a {
+                            padding: 0 1em;
+                            .cursiveSpace2();
+                            color: @font;
+                        }
+                    }
+                    img {
+                        width: 85%;
+                        padding: .5em;
+                    }
+                }
+                form {
+                    margin: 1em 0;
+                    .cursiveSpace2();
+                    .flexcolumn();
+
+                    section {
+                        .flexcolumn();
+                        margin: .2em;
+                    }
+                    button {
+                        margin: .2em;
+                    }
+                }
+            }
             .project-card {
                 .flexcolumn();
                 background-color: @cardbg;
@@ -120,119 +247,6 @@ body {
                     padding: .5em;
                 }
             }
-            h3 {
-                .cursiveSpace2();
-            }
-            .row {
-                .flexrow();
-
-                .column {
-                    .flexcolumn();
-                    align-items: flex-start;
-
-                    h3 {
-                        .cursiveSpace2();
-                    }
-
-                    .row {
-                        .flexrow();
-
-                        .column {
-                            .flexcolumn();
-                        }
-                    }
-                }
-                .formHide {
-                    display: none;
-                }
-                .skills {
-                    li {
-                        list-style: none;
-                    }
-                }
-            }
-    }
-    
-
-    .resume {
-        .flexcolumn();
-        
-        .resume-parts {
-            .flexcolumn();
-            justify-content: space-around;
-            .cursiveSpace2();
-            width: 75%;
-            .skills-education {
-                .flexcolumn();
-                width: 75%;
-                .skills {
-                    .flexcolumn();
-                    .desktop {
-                        display: none;
-                    }
-                    .mobile {
-                        tr {
-                            td {
-                                padding: .1em 1.5em;
-                            }
-                        }
-                    }
-                }
-                .education {
-                    .flexcolumn();
-                    width: 155%;
-                    .desktop {
-                        display: none;
-                    }
-                    .mobile {
-                        tr {
-                            td {
-                                padding: .2em 0 .5em 0;
-                            }
-                            .next {
-                                padding-top: 1em;
-                            }
-                        }
-
-                    }
-                }
-            }
-            .positions {
-                .flexcolumn();
-                width: 125%;
-                table {
-                    tr {
-                        td {
-                            padding: 0 .5em .5em .5em;
-                        }
-                        .next {
-                            padding-top: 1em;
-                        }
-                    }
-
-                }
-            }
-        }
-        h4 {
-            .cursiveSpace2();
-        }
-    }
-    .contact {
-        .flexcolumn();
-        .cursiveSpace2();
-        .reach {
-            .flexcolumn();
-            width: 75%;
-            h2 {
-                text-align: center;
-            }
-            p {
-                display: flex;
-                flex-direction: column;
-                width: 75%;
-                word-wrap: break-word;
-            }
-        }
     }
     footer {
         font-family: 'Bad Script', cursive;

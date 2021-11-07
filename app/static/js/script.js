@@ -10,4 +10,15 @@ $(document).ready(function() {
             'align-items': 'center'
         })
     })
+    $('#showSubMenu').click(function() {
+        $('#hideSubMenu').animate( {
+            width: 'toggle'
+        })
+        $('#hideSubMenu').css({
+            'display': 'flex',
+            'flex-direction': 'column',
+            'justify-content': 'center',
+            'align-items': 'center'
+        })
+    })
 })

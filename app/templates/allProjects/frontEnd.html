@@ -26,19 +26,51 @@
         <h3>Front End Projects</h3>
         <div class="column">
             <h4>Current Front End Projects</h4>
-            {% for f in front %}
-                {% if f.theStatus == 0 %}
-                    <p>{{f.projName}}</p>
-                {% endif %}
-            {% endfor %}
+            <div class="row smallRow">
+                {% for f in front %}
+                    {% if f.theStatus == 0 %}
+                        <div class="project-card">
+                            <h3>{{f.projName}}</h3>
+                            <h4>{{f.projDesc}}</h4>
+                            <div class="links">
+                                {% if f.projSource != '' %}
+                                    <a href="{{f.projSource}}">Source Code</a>
+                                {% endif %}
+                                {% if f.projLink != '' %}
+                                    <a href="{{f.projLink}}">Live Link</a>
+                                {% endif %}
+                            </div>
+                            {% if f.projOrg != '' %}
+                                <h4><a href="{{f.projOrg}}">Organization Link</a></h4>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
         </div>
         <div class="column">
             <h4>Past Front End Projects</h4>
-            {% for f in front %}
-                {% if f.theStatus == 1 %}
-                    <p>{{f.projName}}</p>
-                {% endif %}
-            {% endfor %}
+            <div class="row smallRow">
+                {% for f in front %}
+                    {% if f.theStatus == 1 %}
+                        <div class="project-card">
+                            <h3>{{f.projName}}</h3>
+                            <h4>{{f.projDesc}}</h4>
+                            <div class="links">
+                                {% if f.projSource != '' %}
+                                    <a href="{{f.projSource}}">Source Code</a>
+                                {% endif %}
+                                {% if f.projLink != '' %}
+                                    <a href="{{f.projLink}}">Live Link</a>
+                                {% endif %}
+                            </div>
+                            {% if f.projOrg != '' %}
+                                <h4><a href="{{f.projOrg}}">Organization Link</a></h4>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
         </div>
         {% for u in updated %}
             <p>Last Updated on {{u.updatedAt}}</p>

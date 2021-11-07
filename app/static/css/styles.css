@@ -89,6 +89,7 @@ body header nav {
   justify-content: center;
   width: 95%;
   background-color: #aea9a5;
+  padding: 0.2em 0;
 }
 body header nav .navbar {
   display: none;
@@ -99,24 +100,28 @@ body header nav .nav-small {
   align-items: center;
   justify-content: center;
   justify-content: space-around;
+  width: 95%;
 }
 body header nav .nav-small .button {
   font-family: 'Coming Soon', cursive;
   font-size: 1.2em;
   border: 2px groove #909970;
 }
-body header nav .nav-small #hideMenu {
+body header nav .nav-small #hideMenu,
+body header nav .nav-small #hideSubMenu {
   display: none;
 }
-body header nav .nav-small #hideMenu .nav-option {
+body header nav .nav-small #hideMenu .nav-option,
+body header nav .nav-small #hideSubMenu .nav-option {
   text-decoration: none;
   cursor: pointer;
   font-family: 'Coming Soon', cursive;
-  width: 95%;
+  width: 100%;
   text-align: center;
   color: inherit;
 }
-body header nav .nav-small #hideMenu .nav-option:hover {
+body header nav .nav-small #hideMenu .nav-option:hover,
+body header nav .nav-small #hideSubMenu .nav-option:hover {
   background-color: #909970;
 }
 body main {
@@ -155,6 +160,11 @@ body main .about-body p {
   font-family: 'Coming Soon', cursive;
   font-size: 1.2em;
 }
+body main h1 {
+  font-family: 'Coming Soon', cursive;
+  letter-spacing: 0.2em;
+  text-align: center;
+}
 body main h2 {
   font-family: 'Coming Soon', cursive;
   letter-spacing: 0.2em;
@@ -163,6 +173,158 @@ body main h4 {
   font-family: 'Coming Soon', cursive;
   letter-spacing: 0.2em;
   text-align: center;
+}
+body main h3 {
+  font-family: 'Coming Soon', cursive;
+  letter-spacing: 0.2em;
+}
+body main .row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+body main .row .column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+}
+body main .row .column h3 {
+  font-family: 'Coming Soon', cursive;
+  letter-spacing: 0.2em;
+}
+body main .row .column .row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+body main .row .column .row .column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+body main .row .skills li {
+  list-style: none;
+}
+body main p {
+  font-family: 'Coming Soon', cursive;
+  font-size: 1.2em;
+}
+body main .resume {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+body main .resume .cResume {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+body main .resume .cResume .skills {
+  display: none;
+}
+body main .resume .cResume .smallResume {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+body main .resume .cResume .smallResume span {
+  margin: 0.1em;
+  font-family: 'Coming Soon', cursive;
+  font-size: 1.2em;
+}
+body main .resume .cResume table {
+  font-family: 'Coming Soon', cursive;
+  letter-spacing: 0.2em;
+}
+body main .resume .cResume table tr .colspan {
+  text-align: left;
+}
+body main table {
+  font-family: 'Coming Soon', cursive;
+  letter-spacing: 0.2em;
+}
+body main table tr .colspan {
+  text-align: left;
+}
+body main .contact {
+  display: none;
+}
+body main .smallContact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+body main .smallContact p {
+  text-align: center;
+}
+body main .smallRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+body main .smallRow .project-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #aea9a577;
+  border: 3px groove #aea9a577;
+  margin: 0.5em 0 1.5em 0;
+}
+body main .smallRow .project-card h3 {
+  font-family: 'Coming Soon', cursive;
+  letter-spacing: 0.2em;
+}
+body main .smallRow .project-card h4 {
+  font-family: 'Coming Soon', cursive;
+  letter-spacing: 0.2em;
+  text-align: center;
+  width: 75%;
+}
+body main .smallRow .project-card .links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+body main .smallRow .project-card .links a {
+  padding: 0 1em;
+  font-family: 'Coming Soon', cursive;
+  letter-spacing: 0.2em;
+  color: #000;
+}
+body main .smallRow .project-card img {
+  width: 85%;
+  padding: 0.5em;
+}
+body main .smallRow form {
+  margin: 1em 0;
+  font-family: 'Coming Soon', cursive;
+  letter-spacing: 0.2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+body main .smallRow form section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0.2em;
+}
+body main .smallRow form button {
+  margin: 0.2em;
 }
 body main .project-card {
   display: flex;
@@ -199,137 +361,6 @@ body main .project-card img {
   width: 85%;
   padding: 0.5em;
 }
-body main h3 {
-  font-family: 'Coming Soon', cursive;
-  letter-spacing: 0.2em;
-}
-body main .row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-body main .row .column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-items: flex-start;
-}
-body main .row .column h3 {
-  font-family: 'Coming Soon', cursive;
-  letter-spacing: 0.2em;
-}
-body main .row .column .row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-body main .row .column .row .column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-body main .row .formHide {
-  display: none;
-}
-body main .row .skills li {
-  list-style: none;
-}
-body .resume {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-body .resume .resume-parts {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  justify-content: space-around;
-  font-family: 'Coming Soon', cursive;
-  letter-spacing: 0.2em;
-  width: 75%;
-}
-body .resume .resume-parts .skills-education {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 75%;
-}
-body .resume .resume-parts .skills-education .skills {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-body .resume .resume-parts .skills-education .skills .desktop {
-  display: none;
-}
-body .resume .resume-parts .skills-education .skills .mobile tr td {
-  padding: 0.1em 1.5em;
-}
-body .resume .resume-parts .skills-education .education {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 155%;
-}
-body .resume .resume-parts .skills-education .education .desktop {
-  display: none;
-}
-body .resume .resume-parts .skills-education .education .mobile tr td {
-  padding: 0.2em 0 0.5em 0;
-}
-body .resume .resume-parts .skills-education .education .mobile tr .next {
-  padding-top: 1em;
-}
-body .resume .resume-parts .positions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 125%;
-}
-body .resume .resume-parts .positions table tr td {
-  padding: 0 0.5em 0.5em 0.5em;
-}
-body .resume .resume-parts .positions table tr .next {
-  padding-top: 1em;
-}
-body .resume h4 {
-  font-family: 'Coming Soon', cursive;
-  letter-spacing: 0.2em;
-}
-body .contact {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Coming Soon', cursive;
-  letter-spacing: 0.2em;
-}
-body .contact .reach {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 75%;
-}
-body .contact .reach h2 {
-  text-align: center;
-}
-body .contact .reach p {
-  display: flex;
-  flex-direction: column;
-  width: 75%;
-  word-wrap: break-word;
-}
 body footer {
   font-family: 'Bad Script', cursive;
   background-color: #aea9a5;
@@ -365,6 +396,13 @@ body footer .row img {
   body main .project-card img {
     width: 75%;
   }
+  body main .smallRow {
+    text-align: center;
+  }
+  body main .smallRow .column {
+    text-align: center;
+    align-items: center;
+  }
 }
 @media only screen and (min-width: 530px) {
   body header nav {
@@ -373,21 +411,20 @@ body footer .row img {
   body main .about-start img {
     width: 30%;
   }
-  body .resume .resume-parts .skills-education .skills .mobile {
+  body main .resume .cResume .smallResume {
     display: none;
   }
-  body .resume .resume-parts .skills-education .skills .desktop {
-    display: block;
-  }
-  body .resume .resume-parts .skills-education .skills .desktop tr td {
-    padding: 0 0.5em;
-    text-align: left;
-  }
-  body .contact .reach p {
+  body main .resume .cResume .skills {
+    display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
   }
-  body .contact .reach p a {
-    padding-left: 0.5em;
+  body main .resume .cResume .skills li {
+    margin: 0.5em;
+    font-family: 'Coming Soon', cursive;
+    font-size: 1.2em;
   }
 }
 @media only screen and (min-width: 730px) {
@@ -451,13 +488,6 @@ body footer .row img {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-  }
-  body main .row .formHide {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0 1em;
     align-items: flex-start;
   }
   body main .row .column {
@@ -465,6 +495,22 @@ body footer .row img {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 0.5em;
+  }
+  body main .row .data {
+    margin: 1em;
+  }
+  body main .row form {
+    margin: 1em;
+  }
+  body main .row form section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  body main .row form section label {
+    margin: 0 0.5em;
   }
   body main .resume {
     width: 100%;
@@ -499,44 +545,21 @@ body footer .row img {
   body main .data .column {
     margin: 0 1em;
   }
-}
-@media only screen and (min-width: 850px) {
-  body header .head img {
-    width: 12%;
+  body main .column .row {
+    flex-wrap: wrap;
   }
-  body main {
-    width: 65%;
+  body main .column .row .project-card {
+    width: 300px;
+    height: 300px;
+    margin: 1em;
   }
-  body main .about-start img {
-    width: 20%;
+  body main .smallContact {
+    display: none;
   }
-  body .resume .resume-parts {
-    width: 65%;
-  }
-  body .resume .resume-parts .skills-education {
-    flex-direction: row;
-    width: 115%;
-  }
-  body .resume .resume-parts .skills-education .skills {
-    padding-right: 1em;
-  }
-}
-@media only screen and (min-width: 1000px) {
-  body header .head img {
-    width: 10%;
-  }
-  body main {
-    width: 50%;
-  }
-  body main .about-start img {
-    width: 20%;
-  }
-  body main .project-card img {
-    width: 55%;
-  }
-}
-@media only screen and (min-width: 1330px) {
-  body header .head img {
-    width: 10%;
+  body main .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }

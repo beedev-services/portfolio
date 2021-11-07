@@ -19,11 +19,20 @@
         </nav>
     </header>
     <main>
-        {% for c in contact %}
-        <p>Email Address: <a href="mailto:{{c.email}}">{{c.email}}</a></p>
-        <p>LinkedIn: <a href="{{c.linkedIn}}">Profile</a></p>
-        <p>Github User: <a href="{{c.github}}">melissa-24</a></p>
-        {% endfor %}
+        <div class="column contact">
+            {% for c in contact %}
+                <p>Email Address: <a href="mailto:{{c.email}}">{{c.email}}</a></p>
+                <p>LinkedIn: <a href="{{c.linkedIn}}">Profile</a></p>
+                <p>Github User: <a href="{{c.github}}">melissa-24</a></p>
+            {% endfor %}
+        </div>
+        <div class="column smallContact">
+            {% for c in contact %}
+                <p>Email Address: <br><a href="mailto:{{c.email}}">{{c.email}}</a></p>
+                <p>LinkedIn: <br><a href="{{c.linkedIn}}">Profile</a></p>
+                <p>Github User: <br><a href="{{c.github}}">melissa-24</a></p>
+            {% endfor %}
+        </div>
         <p>Feel free to use the chat icon below as well</p>
         {% for u in updated %}
             <p>Last Updated on {{u.updatedAt}}</p>
@@ -32,6 +41,16 @@
     {% block footer %} {% include 'footer.html' %} {% endblock footer %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src='{% static "js/script.js" %}'></script>
-    <script src="{% static 'js/tawk.js' %}"></script>
+    <script>
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/6178791586aee40a573881d3/1fiv9hvem';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
 </body>
 </html>
